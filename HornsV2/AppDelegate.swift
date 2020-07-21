@@ -1,8 +1,9 @@
 
 import UIKit
+import FirebaseAuth
 import Firebase
-import FBSDKCoreKit
 import IQKeyboardManagerSwift
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,12 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-        
-        ApplicationDelegate.shared.application(
-            application,
-            didFinishLaunchingWithOptions: launchOptions
-        )
+        GMSPlacesClient.provideAPIKey("AIzaSyCzUaC4lHNFOgx2i6A1oUfv_YQY5NBPv-M")
         configureInitialViewController()
+        
         return true
     }
     
@@ -33,6 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         window?.rootViewController = initialVC
         window?.makeKeyAndVisible()
+    }
+    
+    func applicationWillResignActive(_ application: UIApplication) {
+        
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        
     }
 }
 

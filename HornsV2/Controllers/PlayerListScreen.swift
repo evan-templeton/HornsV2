@@ -10,11 +10,15 @@ class PlayerListScreen: UIViewController {
     
     var playerList: [Player] = []
     
+    var selectedPlayer = Player(name: "", image: "", location: "", email: "")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        title = "All Players"
         
         loadPlayerList()
     }
@@ -32,8 +36,11 @@ class PlayerListScreen: UIViewController {
                     if let snapshotDocuments = querySnapshot?.documents {
                         for doc in snapshotDocuments {
                             let data = doc.data()
-                            if let playerName = data[K.Fstore.fullName] as? String, let playerImage = data[K.Fstore.profileImageURL] as? String, let playerLocation = data[K.Fstore.location] as? String {
-                                let newPlayer = Player(name: playerName, image: playerImage, location: playerLocation)
+                            if let playerName = data[K.Fstore.fullName] as? String,
+                                let playerImage = data[K.Fstore.profileImageURL] as? String,
+                                let playerLocation = data[K.Fstore.location] as? String,
+                                let playerEmail = data[K.Fstore.email] as? String {
+                                let newPlayer = Player(name: playerName, image: playerImage, location: playerLocation, email: playerEmail)
                                 self.playerList.append(newPlayer)
                                 
                                 DispatchQueue.main.async {
@@ -47,19 +54,8 @@ class PlayerListScreen: UIViewController {
                 }
         }
     }
-    
-    @IBAction func logOutPressed(_ sender: UIBarButtonItem) {
-    
-    do {
-        try Auth.auth().signOut()
-    } catch let signOutError as NSError {
-        print ("Error signing out: %@", signOutError)
-    }
-        (UIApplication.shared.delegate as! AppDelegate).configureInitialViewController()
-    }
-    
-    
 }
+
 
 extension PlayerListScreen: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -74,5 +70,22 @@ extension PlayerListScreen: UITableViewDataSource, UITableViewDelegate {
         cell.setPlayerCell(player: player)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        selectedPlayer = playerList[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "playerViewSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "playerViewSegue" {
+            let destinationVC = segue.destination as! PlayerViewController
+            destinationVC.playerImage = selectedPlayer.image
+            destinationVC.playerName = selectedPlayer.name
+            destinationVC.playerLocation = selectedPlayer.location
+            destinationVC.playerEmail = selectedPlayer.email
+        }
     }
 }

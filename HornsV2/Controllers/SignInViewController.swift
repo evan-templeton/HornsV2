@@ -11,6 +11,8 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "🎺Horns"
+        
         setupUI()
         
     }
@@ -22,7 +24,9 @@ class SignInViewController: UIViewController {
     
     @IBAction func signInPressed(_ sender: UIButton) {
         
-        if let email = emailTextField.text, let password = passwordTextField.text {
+        self.view.endEditing(true)
+        
+        if let email = emailTextField.text?.lowercased(), let password = passwordTextField.text {
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if let e = error {
                 print(e.localizedDescription)
@@ -32,10 +36,6 @@ class SignInViewController: UIViewController {
             }
         }
     }
-    @IBAction func signUpButtonPressed(_ sender: UIButton) {
-        navigationController?.popToRootViewController(animated: true)
-    }
-    
     @IBAction func forgotPasswordPressed(_ sender: UIButton) {
         
     }
