@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>629555596356-phvkvavl9h51rie32tgdnsker38i354s.apps.googleusercontent.com</string>
+	<string></string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.629555596356-phvkvavl9h51rie32tgdnsker38i354s</string>
+	<string></string>
 	<key>API_KEY</key>
-	<string>AIzaSyBJczOiOMLQDC3L-wcLleCLFUuQdGW7-p8</string>
+	<string></string>
 	<key>GCM_SENDER_ID</key>
 	<string>629555596356</string>
 	<key>PLIST_VERSION</key>
@@ -19,17 +19,17 @@
 	<key>STORAGE_BUCKET</key>
 	<string>horns-cb5c4.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:629555596356:ios:5f1516c69e859f14e50011</string>
+	<string></string>
 	<key>DATABASE_URL</key>
 	<string>https://horns-cb5c4.firebaseio.com</string>
 </dict>
