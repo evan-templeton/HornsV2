@@ -12,7 +12,6 @@
 		6B0B85E524B2873A006D02EE /* SelfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0B85E424B2873A006D02EE /* SelfViewController.swift */; };
 		6B16C0F624BC9D2100BE52EE /* HornBrandAutoCompleteSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B16C0F524BC9D2100BE52EE /* HornBrandAutoCompleteSearchController.swift */; };
 		6B282A5924A947C200CF4D28 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B282A5824A947C200CF4D28 /* PlayerViewController.swift */; };
-		6B40E69D24B6AF56008BF003 /* HornFinishList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B40E69C24B6AF56008BF003 /* HornFinishList.swift */; };
 		6B41CB9924A29C5A00DA8243 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41CB9824A29C5A00DA8243 /* AppDelegate.swift */; };
 		6B41CB9D24A29C5A00DA8243 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B41CB9C24A29C5A00DA8243 /* WelcomeViewController.swift */; };
 		6B41CBA224A29C5C00DA8243 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B41CBA124A29C5C00DA8243 /* Assets.xcassets */; };
@@ -43,7 +42,6 @@
 		6B0B85E424B2873A006D02EE /* SelfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfViewController.swift; sourceTree = "<group>"; };
 		6B16C0F524BC9D2100BE52EE /* HornBrandAutoCompleteSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HornBrandAutoCompleteSearchController.swift; sourceTree = "<group>"; };
 		6B282A5824A947C200CF4D28 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
-		6B40E69C24B6AF56008BF003 /* HornFinishList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HornFinishList.swift; sourceTree = "<group>"; };
 		6B41CB9524A29C5A00DA8243 /* HornsV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HornsV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B41CB9824A29C5A00DA8243 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B41CB9C24A29C5A00DA8243 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -101,7 +99,6 @@
 				6B84958124B0FB2F00B5AF87 /* Horn.swift */,
 				6B84958324B0FBB100B5AF87 /* Mouthpiece.swift */,
 				6B890A9324B50B360019E3CE /* HornBrandsList.swift */,
-				6B40E69C24B6AF56008BF003 /* HornFinishList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -321,7 +318,6 @@
 				6BF12FD824A7FB0300A8FD68 /* SDWebImageHelper.swift in Sources */,
 				6BF4A5C624C604600096D7F6 /* myMouthpieceCell.swift in Sources */,
 				6B41CB9924A29C5A00DA8243 /* AppDelegate.swift in Sources */,
-				6B40E69D24B6AF56008BF003 /* HornFinishList.swift in Sources */,
 				6B4CCC6524A4FA74009988DC /* ForgotPasswordViewController.swift in Sources */,
 				6BB2E7BE24A69F8D00089175 /* PlayerListScreen.swift in Sources */,
 				6B890A9424B50B360019E3CE /* HornBrandsList.swift in Sources */,

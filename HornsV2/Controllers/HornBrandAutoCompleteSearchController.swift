@@ -103,6 +103,6 @@ extension HornBrandAutoCompleteSearchController: UITableViewDataSource, UITableV
         self.delegate?.didChooseBrand(hornBrand)
         searchController.isActive = false
         self.navigationController?.popViewController(animated: true)
-        
+        self.dismiss(animated: true, completion: nil)
     }
 }

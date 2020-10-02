@@ -17,19 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         GMSPlacesClient.provideAPIKey("AIzaSyCzUaC4lHNFOgx2i6A1oUfv_YQY5NBPv-M")
         configureInitialViewController()
-        
         return true
     }
     
     func configureInitialViewController() {
-        var initialVC: UIViewController
         let storyBoard = UIStoryboard(name: "Welcome", bundle: nil)
         if Auth.auth().currentUser != nil {
-            initialVC = storyBoard.instantiateViewController(identifier: "TabBarVC")
+            window?.rootViewController = storyBoard.instantiateViewController(withIdentifier: "TabBarVC") as! UITabBarController
         } else {
-            initialVC = storyBoard.instantiateViewController(identifier: "WelcomeVC")
+            print("Success?")
+            window?.rootViewController = storyBoard.instantiateViewController(withIdentifier: "WelcomeVC") as! UINavigationController
         }
-        window?.rootViewController = initialVC
         window?.makeKeyAndVisible()
     }
     
@@ -41,4 +39,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
 }
-

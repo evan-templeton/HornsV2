@@ -2,7 +2,7 @@
 import UIKit
 import Firebase
 
-class AddHornViewController: UIViewController {
+class AddHornViewController: UIViewController, HornBrandDelegate {
     
     let db = Firestore.firestore()
     var email: String?
@@ -16,6 +16,18 @@ class AddHornViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+    }
+    
+    @IBAction func hornBrandPressed(_ sender: UITextField) {
+        hornMakeTextField.endEditing(true)
+        let vc = self.storyboard!.instantiateViewController(withIdentifier: K.VCID.HORN_BRAND) as! HornBrandAutoCompleteSearchController
+        vc.delegate = self
+        present(vc, animated: true, completion: nil)
+    }
+    
+    func didChooseBrand(_ brand: String) {
+        hornMakeTextField.text = brand
+        hornMakeTextField.resignFirstResponder()
     }
     
     @IBAction func addHornPressed(_ sender: UIButton) {

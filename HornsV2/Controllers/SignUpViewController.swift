@@ -49,7 +49,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, HornBrandDele
     }
     
     @IBAction func hornBrandPressed(_ sender: UITextField) {
-        
         hornBrandTextField.endEditing(true)
         let vc = self.storyboard!.instantiateViewController(withIdentifier: K.VCID.HORN_BRAND) as! HornBrandAutoCompleteSearchController
         vc.delegate = self
@@ -80,7 +79,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, HornBrandDele
             errorLabel.text = K.Error.ENTER_NAME
             return false
         }
-        guard let email = emailTextField.text, !email.isEmpty else {
+        guard let email = emailTextField.text?.lowercased(), !email.isEmpty else {
             errorLabel.text = K.Error.ENTER_EMAIL
             return false
         }
@@ -177,7 +176,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, HornBrandDele
                             //metaImageURL is the user's image URL
                             if let metaImageURL = url?.absoluteString,
                                 let fullName = self.fullNameTextField.text,
-                                let email = self.emailTextField.text,
+                                let email = self.emailTextField.text?.lowercased(),
                                 let location = self.cityTextField.text,
                                 let hornBrand = self.hornBrandTextField.text,
                                 let hornModel = self.hornModelTextField.text,

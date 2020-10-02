@@ -13,7 +13,6 @@ class SelfViewController: UIViewController {
     var myName: String = ""
     var myLocation: String = ""
     let myEmail = (Auth.auth().currentUser!.email!)
-    let welcomeVC = WelcomeViewController()
     
     var myHornList: [Horn] = []
     var myMouthpieceList: [Mouthpiece] = []
@@ -45,7 +44,6 @@ class SelfViewController: UIViewController {
     }
     
     func loadMyInfo() {
-        
         db.collection(K.Fstore.collectionName).document(myEmail)
             .getDocument { (querySnapshot, error) in
                 if let e = error {
@@ -75,6 +73,7 @@ class SelfViewController: UIViewController {
                 if let e = error {
                     print(e.localizedDescription)
                 } else {
+                    self.myHornList = []
                     if let snapshotDocuments = querySnapshot?.documents {
                         for doc in snapshotDocuments {
                             let data = doc.data()
@@ -96,10 +95,11 @@ class SelfViewController: UIViewController {
     
     func loadMyMouthpieces() {
         db.collection(K.Fstore.collectionName).document(myEmail).collection(K.Fstore.Mouthpiece.collectionName)
-        .addSnapshotListener { (querySnapshot, error) in
+            .addSnapshotListener { (querySnapshot, error) in
                 if let e = error {
                     print(e.localizedDescription)
                 } else {
+                    self.myMouthpieceList = []
                     if let snapshotDocuments = querySnapshot?.documents {
                         for doc in snapshotDocuments {
                             let data = doc.data()
@@ -140,11 +140,11 @@ class SelfViewController: UIViewController {
     @IBAction func logOutPressed(_ sender: UIBarButtonItem) {
         do {
             try Auth.auth().signOut()
-//            appDelegate.configureInitialViewController()
-            self.navigationController?.popToViewController(welcomeVC, animated: true)
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
+        self.navigationController?.popViewController(animated: true)
+        appDelegate.configureInitialViewController()
     }
 }
 

@@ -186,6 +186,7 @@
         "Van Laar",
         "Verve",
         "V.F. Červeny",
+        "Virtu",
         "Votruba",
         "Warburton",
         "Weber",
