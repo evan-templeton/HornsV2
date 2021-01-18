@@ -1,6 +1,5 @@
 
 import UIKit
-import FirebaseAuth
 import Firebase
 import GooglePlaces
 
@@ -37,7 +36,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, HornBrandDele
         let autoCompleteController = GMSAutocompleteViewController()
         autoCompleteController.delegate = self
         
-        let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) | UInt(GMSPlaceField.addressComponents.rawValue))!
+        let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) | UInt(GMSPlaceField.addressComponents.rawValue))
         autoCompleteController.placeFields = fields
         
         let filter = GMSAutocompleteFilter()
@@ -156,7 +155,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, HornBrandDele
                 //grabs user's uid from Auth, creates Firestore profile child with uid
                 if let authData = authResult {
                     let uid = authData.user.uid
-                    let storageRef = self.storage.reference(forURL: "gs://horns-cb5c4.appspot.com")
+                    let storageRef = self.storage.reference(forURL: "gs://horns-281918.appspot.com")
                     let storageProfileRef = storageRef.child("profile").child(uid)
                     
                     let metadata = StorageMetadata()

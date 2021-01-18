@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string></string>
+	<string>864280468208-06kbpn1ncpdbb9hdi0cm0bl8sgpa0n5s.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string></string>
+	<string>com.googleusercontent.apps.864280468208-06kbpn1ncpdbb9hdi0cm0bl8sgpa0n5s</string>
 	<key>API_KEY</key>
-	<string></string>
+	<string>AIzaSyCXBkZuUQee-M_xYl-Uvc6wgDmdO03cHPk</string>
 	<key>GCM_SENDER_ID</key>
-	<string>629555596356</string>
+	<string>864280468208</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.evantempleton.HornsV2</string>
 	<key>PROJECT_ID</key>
-	<string>horns-cb5c4</string>
+	<string>horns-281918</string>
 	<key>STORAGE_BUCKET</key>
-	<string>horns-cb5c4.appspot.com</string>
+	<string>horns-281918.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string></string>
-	<key>DATABASE_URL</key>
-	<string>https://horns-cb5c4.firebaseio.com</string>
+	<string>1:864280468208:ios:a08f8900378e009fba8035</string>
 </dict>
 </plist>
