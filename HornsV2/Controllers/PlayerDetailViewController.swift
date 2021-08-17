@@ -3,22 +3,27 @@ import UIKit
 import SDWebImage
 import Firebase
 
-class PlayerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    var playerImage: String?
-    var playerName: String = ""
-    var playerLocation: String = ""
-    var playerEmail: String = ""
-    
-    let db = Firestore.firestore()
-    
-    var playerHornList: [Horn] = []
-    var playerMouthpieceList: [Mouthpiece] = []
+class PlayerDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var playerImageView: UIImageView!
     @IBOutlet weak var playerNameLabel: UILabel!
     @IBOutlet weak var playerLocationLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
+    private var player: Player?
+    private var db: Firestore?
+    private var playerHornList: [Horn] = []
+    private var playerMouthpieceList: [Mouthpiece] = []
+    
+    init(player: Player, db: Firestore) {
+        self.player = player
+        self.db = db
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,21 +31,25 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         
-        playerImageView.loadImage(playerImage)
-        playerNameLabel.text = playerName
-        playerLocationLabel.text = playerLocation
-        
+        loadPlayerDetail()
         loadPlayerHorns()
         loadPlayerMouthpieces()
     }
     
+    private func loadPlayerDetail() {
+        playerImageView.loadImage(self.player?.image)
+        playerNameLabel.text = player?.name
+        playerLocationLabel.text = player?.location
+    }
+    
     func loadPlayerHorns() {
-        db.collection(K.Fstore.collectionName).document(playerEmail).collection(K.Fstore.Horn.collectionName)
-            //.order(by: K.Fstore.location)
+        guard let db = self.db, let player = self.player else { return }
+        // Make these constants shorter
+        db.collection(K.Fstore.collectionName).document(player.email).collection(K.Fstore.Horn.collectionName)
             .getDocuments { (querySnapshot, error) in
                 
-                if let e = error {
-                    print("There was an issue retrieving horn data from Firestore. \(e.localizedDescription)")
+                if let error = error {
+                    print("There was an issue retrieving horn data from Firestore. \(error.localizedDescription)")
                 } else {
                     if let snapshotDocuments = querySnapshot?.documents {
                         for doc in snapshotDocuments {
@@ -63,7 +72,8 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func loadPlayerMouthpieces() {
-        db.collection(K.Fstore.collectionName).document(playerEmail).collection(K.Fstore.Mouthpiece.collectionName)
+        guard let db = self.db, let player = self.player else { return }
+        db.collection(K.Fstore.collectionName).document(player.email).collection(K.Fstore.Mouthpiece.collectionName)
             .getDocuments { (querySnapshot, error) in
                 
                 if let e = error {
